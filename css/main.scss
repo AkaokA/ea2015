@@ -18,11 +18,16 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 /* end reset */
 
 body {
+	font-family: "adelle-sans-1","adelle-sans-2", sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 12pt;
+	font-size: 14pt;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 	height: 100%;
-	color: #777572;
+	color: #dc8500;
+}
+
+h1 {
+	font-weight: 800;
 }
