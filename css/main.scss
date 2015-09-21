@@ -17,17 +17,162 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 
 /* end reset */
 
+$color-key: #222;
+$color-background: #fff;
+
+$ease-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
+$ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
+$ease-expo: cubic-bezier(1, 0, 0, 1);
+$ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+
 body {
 	font-family: "adelle-sans-1","adelle-sans-2", sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: 14pt;
+	font-size: 16px;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 	height: 100%;
-	color: #dc8500;
+	color: $color-key;
+	background-color: $color-background;
 }
 
 h1 {
-	font-weight: 800;
+	font-size: 32px;
+	font-weight: 300;
+	line-height: 1;
+	margin: 8px 0;
+}
+
+p {
+	line-height: 1.5;
+}
+
+@-webkit-keyframes fade-in {
+	from {
+		opacity: 0;
+		-webkit-transform: scale(1);
+	}
+	to {
+		opacity: 1;
+		-webkit-transform: scale(1);
+	}
+}		
+@keyframes fade-in {
+	from {
+		opacity: 0;
+		transform: scale(1);
+	}
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}		
+
+
+header {
+	text-align: center;
+	padding: 32px 0;
+	
+	h1, p {
+		opacity: 0;
+		
+		-webkit-animation: fade-in 0.75s $ease-cubic 1;
+		animation: fade-in 0.75s $ease-cubic 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+	
+	h1 {
+		-webkit-animation-delay: 2s;
+		animation-delay: 2s;
+	}
+	p {
+		-webkit-animation-delay: 3s;
+		animation-delay: 3s;
+	}
+}
+
+
+
+@-webkit-keyframes draw-line {
+	to {
+		stroke-dashoffset: 0;
+	}
+}		
+@keyframes draw-line {
+	to {
+		stroke-dashoffset: 0;
+	}
+}		
+
+@-webkit-keyframes rotate-in {
+	to {
+		-webkit-transform: rotate(0) scale(1);
+		opacity: 1;
+	}
+}
+@keyframes rotate-in {
+	to {
+		transform: rotate(0) scale(1);
+		opacity: 1;
+	}
+}
+
+.ea-monogram {
+	-webkit-transform: rotate(360deg) scale(0.25);
+	transform: rotate(360deg) scale(0.25);
+	opacity: 0;
+	
+	-webkit-animation: rotate-in 3s $ease-out-expo 1;
+	animation: rotate-in 3s $ease-out-expo 1;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	
+	path {
+		stroke-width: 3;
+		stroke: $color-key;
+	}
+	
+	.short.line {
+		stroke-dasharray: 18;
+		stroke-dashoffset: 18;
+
+		-webkit-animation: draw-line 0.5s $ease-out-expo 1;
+		animation: draw-line 0.5s $ease-out-expo 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		
+		&.a{
+			-webkit-animation-delay: 1.125s;
+			animation-delay: 1.125s;
+		}
+		&.b{
+			-webkit-animation-delay: 1.25s;
+			animation-delay: 1.25s;
+		}
+	}
+	
+	.vertical.line {
+		stroke-dasharray: 54;
+		stroke-dashoffset: 54;
+
+		-webkit-animation: draw-line 1s $ease-out-expo 1;
+		animation: draw-line 1s $ease-out-expo 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+		-webkit-animation-delay: 1s;
+		animation-delay: 1s;
+	}
+	
+	.curve {
+		stroke-dasharray: 85;
+		stroke-dashoffset: 85;
+
+		-webkit-animation: draw-line 1s $ease-cubic 1;
+		animation: draw-line 1s $ease-cubic 1;
+		-webkit-animation-fill-mode: forwards;
+		animation-fill-mode: forwards;
+	}
+
 }
