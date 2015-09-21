@@ -3,6 +3,8 @@
 ---
 @charset "utf-8";
 
+@import "bourbon/bourbon";
+
 // !———— Reset ————
 
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0} 
@@ -27,17 +29,7 @@ $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
 // !———— Animations ————
 
-@-webkit-keyframes fade-in {
-	from {
-		opacity: 0;
-		-webkit-transform: scale(1);
-	}
-	to {
-		opacity: 1;
-		-webkit-transform: scale(1);
-	}
-}		
-@keyframes fade-in {
+@include keyframes fade-in {
 	from {
 		opacity: 0;
 		transform: scale(1);
@@ -48,26 +40,15 @@ $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 	}
 }
 
-@-webkit-keyframes draw-line {
-	to {
-		stroke-dashoffset: 0;
-	}
-}		
-@keyframes draw-line {
+@include keyframes draw-line {
 	to {
 		stroke-dashoffset: 0;
 	}
 }		
 
-@-webkit-keyframes rotate-in {
+@include keyframes rotate-in {
 	to {
-		-webkit-transform: rotate(0) translateZ(0) scale(1.0, 1.0);
-		opacity: 1;
-	}
-}
-@keyframes rotate-in {
-	to {
-		transform: rotate(0) translateZ(0) scale(1.0, 1.0);
+		transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) translateZ(0) scale(1.0, 1.0);
 		opacity: 1;
 	}
 }
@@ -135,13 +116,13 @@ section {
 
 // !———— Header ————
 
-header {
+#homepage-intro {
 	position: relative;
 	text-align: center;
 	padding: 32px 0;
 	height: 95%;
 
-	-webkit-transition: all 1s $ease-cubic;
+	@include transition: all 1s $ease-cubic;
 	
 	&.shorter {
 		height: 320px;
@@ -151,37 +132,30 @@ header {
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		-webkit-transform: translate(-50%, -50%);		
+		@include transform: translate(-50%, -50%);		
 	}
 	
 	h1, p {
 		opacity: 0;
 		
-		-webkit-animation: fade-in 0.75s $ease-cubic 1;
-		animation: fade-in 0.75s $ease-cubic 1;
-		-webkit-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
+		@include animation: fade-in 0.75s $ease-cubic 1;
+		@include animation-fill-mode: forwards;
 	}
 	
 	h1 {
-		-webkit-animation-delay: 2s;
-		animation-delay: 2s;
+		@include animation-delay: 2s;
 	}
 	p {
-		-webkit-animation-delay: 3s;
-		animation-delay: 3s;
+		@include animation-delay: 3s;
 	}
 }
 
 .ea-monogram {
-	-webkit-transform: rotate(360deg) translateZ(0) scale(1.0, 1.0);
-	transform: rotate(360deg) translateZ(0) scale(1.0, 1.0);
+	@include transform: rotateX(0deg) rotateY(0deg) rotateZ(720deg) translateZ(0) scale(1.0, 1.0);
 	opacity: 0;
 
-	-webkit-animation: rotate-in 3s $ease-out-expo 1;
-	animation: rotate-in 3s $ease-out-expo 1;
-	-webkit-animation-fill-mode: forwards;
-	animation-fill-mode: forwards;
+	@include animation: rotate-in 3s $ease-out-expo 1;
+	@include animation-fill-mode: forwards;
 	
 	margin-bottom: 16px;
 	
@@ -194,18 +168,14 @@ header {
 		stroke-dasharray: 18;
 		stroke-dashoffset: 18;
 
-		-webkit-animation: draw-line 0.5s $ease-out-cubic 1;
-		animation: draw-line 0.5s $ease-out-cubic 1;
-		-webkit-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
+		@include animation: draw-line 0.5s $ease-out-cubic 1;
+		@include animation-fill-mode: forwards;
 		
 		&.a{
-			-webkit-animation-delay: 1.125s;
-			animation-delay: 1.125s;
+			@include animation-delay: 1.125s;
 		}
 		&.b{
-			-webkit-animation-delay: 1.25s;
-			animation-delay: 1.25s;
+			@include animation-delay: 1.25s;
 		}
 	}
 	
@@ -213,22 +183,17 @@ header {
 		stroke-dasharray: 54;
 		stroke-dashoffset: 54;
 
-		-webkit-animation: draw-line 1s $ease-out-cubic 1;
-		animation: draw-line 1s $ease-out-cubic 1;
-		-webkit-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
-		-webkit-animation-delay: 1s;
-		animation-delay: 1s;
+		@include animation: draw-line 1s $ease-out-cubic 1;
+		@include animation-fill-mode: forwards;
+		@include animation-delay: 1s;
 	}
 	
 	.curve {
 		stroke-dasharray: 85;
 		stroke-dashoffset: 85;
 
-		-webkit-animation: draw-line 1s $ease-cubic 1;
-		animation: draw-line 1s $ease-cubic 1;
-		-webkit-animation-fill-mode: forwards;
-		animation-fill-mode: forwards;
+		@include animation: draw-line 1s $ease-cubic 1;
+		@include animation-fill-mode: forwards;
 	}
 }
 
@@ -256,29 +221,28 @@ header {
 			.tile-image {
 				width: 100%;
 				height: 120px;
-// 				background-color: #eee;
 				border-bottom: 1px solid rgba(0,0,0,0.1);
 				margin-bottom: 8px;
 				background-size: contain;
 				background-repeat: no-repeat;
 			}
 			&#cast .tile-image {
-				background-image: url(/images/cast.png);
+				background-image: url(../images/Cast.png);
 			}
 			&#fivehundredpx .tile-image {
-				background-image: url(/images/500px.png);
+				background-image: url(../images/500px.png);
 			}
 			&#debacle .tile-image {
-				background-image: url(/images/debacle.png);
+				background-image: url(../images/Debacle.png);
 			}
 			&#leanin .tile-image {
-				background-image: url(/images/leanin.png);
+				background-image: url(../images/LeanIn.png);
 			}
 			&#bumptop .tile-image {
-				background-image: url(/images/bumptop.png);
+				background-image: url(../images/BumpTop.png);
 			}
 			&#other .tile-image {
-				background-image: url(/images/other.png);
+				background-image: url(../images/Other.png);
 			}
 			
 		}
