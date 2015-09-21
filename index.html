@@ -2,49 +2,56 @@
 layout: default
 class: homepage
 ---
-<section class="section-work">
-	<h2>Work</h2>
+<section class="section-work group">
+	<h2>Past Work</h2>
 	<ul class="work">
 
-	  <li>
+	  <li id="cast">
+	  	<div class="tile-image"></div>
 	  	<h3>Cast</h3>
 	  	<p>A thing for podcasting</p>
 	  </li>
 
-	  <li>
+	  <li id="fivehundredpx">
+	  	<div class="tile-image"></div>
 	  	<h3>500px</h3>
 	  	<p>Everyone's best photos</p>
 	  </li>
 
-	  <li>
+	  <li id="debacle">
+	  	<div class="tile-image"></div>
 	  	<h3>Debacle Software</h3>
 	  	<p>Mobile photography apps</p>
 	  </li>
 
-	  <li>
+	  <li id="leanin">
+	  	<div class="tile-image"></div>
 	  	<h3>LeanIn</h3>
 	  	<p>Social web video</p>
 	  </li>
 
-	  <li>
-	  	<h3></h3>
-	  	<p></p>
+	  <li id="bumptop">
+	  	<div class="tile-image"></div>
+	  	<h3>BumpTop</h3>
+	  	<p>Physics-based desktop</p>
 	  </li>
 
-	  <li>
-	  	<h3></h3>
-	  	<p></p>
+	  <li id="other">
+	  	<div class="tile-image"></div>
+	  	<h3>Client & Personal Work</h3>
+	  	<p>Selected projects</p>
 	  </li>
 
 	</ul>
 </section>
 
-<section class="section-photography">
-<h2>Photography</h2>
-<p><a href="http://500px.com/akaoka">500px Profile</a></p>
+<section class="section-photography group">
+	<h2>Photography</h2>
+	<p><a href="http://500px.com/akaoka">500px Profile</a></p>
+	<p><a href="http://instagram.com/akaoka">Instagram</a></p>
 </section>
 
-<section class="section-writing">
+<section class="section-writing group">
 	<h2>Writing</h2>
 	<ul class="post-list">
 	  {% for post in site.posts %}
@@ -58,7 +65,7 @@ class: homepage
 	</ul>
 </section>
 
-<section class="section-music">
+<section class="section-music group">
 	<h2>Music</h2>
 	<p><a href="https://soundcloud.com/akaoka">Soundcloud</a></p>
 </section>
