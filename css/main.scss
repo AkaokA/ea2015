@@ -3,9 +3,8 @@
 ---
 @charset "utf-8";
 
-/*=========================================
-Reset
-=========================================== */
+// !———— Reset ————
+
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0} 
 *, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; }
 
@@ -15,9 +14,10 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 .group:after { clear: both;}
 .group { zoom: 1;}
 
-/* end reset */
+// !———— Variables ————
 
 $color-key: #222;
+$color-accent: #2c3840;
 $color-background: #fff;
 
 $ease-cubic: cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -25,28 +25,7 @@ $ease-out-cubic: cubic-bezier(0.215, 0.61, 0.355, 1);
 $ease-expo: cubic-bezier(1, 0, 0, 1);
 $ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
 
-body {
-	font-family: "adelle-sans-1","adelle-sans-2", sans-serif;
-	font-style: normal;
-	font-weight: 400;
-	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	height: 100%;
-	color: $color-key;
-	background-color: $color-background;
-}
-
-h1 {
-	font-size: 32px;
-	font-weight: 300;
-	line-height: 1;
-	margin: 8px 0;
-}
-
-p {
-	line-height: 1.5;
-}
+// !———— Animations ————
 
 @-webkit-keyframes fade-in {
 	from {
@@ -67,12 +46,119 @@ p {
 		opacity: 1;
 		transform: scale(1);
 	}
+}
+
+@-webkit-keyframes draw-line {
+	to {
+		stroke-dashoffset: 0;
+	}
+}		
+@keyframes draw-line {
+	to {
+		stroke-dashoffset: 0;
+	}
 }		
 
+@-webkit-keyframes rotate-in {
+	to {
+		-webkit-transform: rotate(0) translateZ(0) scale(1.0, 1.0);
+		opacity: 1;
+	}
+}
+@keyframes rotate-in {
+	to {
+		transform: rotate(0) translateZ(0) scale(1.0, 1.0);
+		opacity: 1;
+	}
+}
+
+// !———— Basic Styles ————
+
+html {
+	height: 100%;
+}
+
+body {
+	font-family: "adelle-sans-1","adelle-sans-2", sans-serif;
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+	height: 100%;
+	color: $color-key;
+	background-color: $color-background;
+}
+
+h1 {
+	font-size: 32px;
+	font-weight: 300;
+	line-height: 1;
+	margin: 8px 0;
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1;
+	margin: 8px 0;
+	text-transform: uppercase;
+}
+
+h3 {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.5;
+}
+
+p {
+	line-height: 1.5;
+}
+
+a {
+	color: $color-accent;
+}
+
+li {
+	list-style: none;
+	margin: 16px 0;
+}
+
+.content-wrapper {
+	margin: 0 auto;
+	max-width: 960px;
+	padding: 0 32px;
+}
+
+section {
+	margin-bottom: 32px;
+}
+
+// !———— Header ————
 
 header {
+	position: relative;
 	text-align: center;
 	padding: 32px 0;
+	height: 100%;
+
+	-webkit-animation: shrink-header 2s $ease-cubic 1;
+	animation: shrink-header 2s $ease-cubic 1;
+	-webkit-animation-fill-mode: forwards;
+	animation-fill-mode: forwards;
+	-webkit-animation-delay: 4s;
+	animation-delay: 4s;
+
+	&.shorter {
+		height: 280px;
+	}
+	
+	.header-content {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		-webkit-transform: translate(-50%, -50%);		
+	}
 	
 	h1, p {
 		opacity: 0;
@@ -93,41 +179,17 @@ header {
 	}
 }
 
-
-
-@-webkit-keyframes draw-line {
-	to {
-		stroke-dashoffset: 0;
-	}
-}		
-@keyframes draw-line {
-	to {
-		stroke-dashoffset: 0;
-	}
-}		
-
-@-webkit-keyframes rotate-in {
-	to {
-		-webkit-transform: rotate(0) scale(1);
-		opacity: 1;
-	}
-}
-@keyframes rotate-in {
-	to {
-		transform: rotate(0) scale(1);
-		opacity: 1;
-	}
-}
-
 .ea-monogram {
-	-webkit-transform: rotate(360deg) scale(0.25);
-	transform: rotate(360deg) scale(0.25);
+	-webkit-transform: rotate(360deg) translateZ(0) scale(1.0, 1.0);
+	transform: rotate(360deg) translateZ(0) scale(1.0, 1.0);
 	opacity: 0;
-	
+
 	-webkit-animation: rotate-in 3s $ease-out-expo 1;
 	animation: rotate-in 3s $ease-out-expo 1;
 	-webkit-animation-fill-mode: forwards;
 	animation-fill-mode: forwards;
+	
+	margin-bottom: 16px;
 	
 	path {
 		stroke-width: 3;
@@ -138,8 +200,8 @@ header {
 		stroke-dasharray: 18;
 		stroke-dashoffset: 18;
 
-		-webkit-animation: draw-line 0.5s $ease-out-expo 1;
-		animation: draw-line 0.5s $ease-out-expo 1;
+		-webkit-animation: draw-line 0.5s $ease-out-cubic 1;
+		animation: draw-line 0.5s $ease-out-cubic 1;
 		-webkit-animation-fill-mode: forwards;
 		animation-fill-mode: forwards;
 		
@@ -157,8 +219,8 @@ header {
 		stroke-dasharray: 54;
 		stroke-dashoffset: 54;
 
-		-webkit-animation: draw-line 1s $ease-out-expo 1;
-		animation: draw-line 1s $ease-out-expo 1;
+		-webkit-animation: draw-line 1s $ease-out-cubic 1;
+		animation: draw-line 1s $ease-out-cubic 1;
 		-webkit-animation-fill-mode: forwards;
 		animation-fill-mode: forwards;
 		-webkit-animation-delay: 1s;
@@ -174,5 +236,14 @@ header {
 		-webkit-animation-fill-mode: forwards;
 		animation-fill-mode: forwards;
 	}
+}
 
+// !———— Content ————
+
+.content {
+	text-align: center;
+	
+	.content-wrapper {
+		
+	}
 }

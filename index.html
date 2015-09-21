@@ -1,15 +1,64 @@
 ---
 layout: default
+class: homepage
 ---
+<section class="section-work">
+	<h2>Work</h2>
+	<ul class="work">
 
-<p></p>
+	  <li>
+	  	<h3>Cast</h3>
+	  	<p>A thing for podcasting</p>
+	  </li>
 
-<ul>
-  {% for post in site.posts %}
-    <li>
-      <a href="{{ post.url }}">{{ post.title }}</a>
-      {{ post.excerpt }}
-    </li>
-  {% endfor %}
-</ul>
+	  <li>
+	  	<h3>500px</h3>
+	  	<p>Everyone's best photos</p>
+	  </li>
 
+	  <li>
+	  	<h3>Debacle Software</h3>
+	  	<p>Mobile photography apps</p>
+	  </li>
+
+	  <li>
+	  	<h3>LeanIn</h3>
+	  	<p>Social web video</p>
+	  </li>
+
+	  <li>
+	  	<h3></h3>
+	  	<p></p>
+	  </li>
+
+	  <li>
+	  	<h3></h3>
+	  	<p></p>
+	  </li>
+
+	</ul>
+</section>
+
+<section class="section-photography">
+<h2>Photography</h2>
+<p><a href="http://500px.com/akaoka">500px Profile</a></p>
+</section>
+
+<section class="section-writing">
+	<h2>Writing</h2>
+	<ul class="post-list">
+	  {% for post in site.posts %}
+	    <li>
+	      <a href="{{ post.url }}">{{ post.title }}</a>
+	      {{ post.excerpt }}
+	    </li>
+	  {% else %}
+	  	<p>No posts yet! Stay tuned.
+	  {% endfor %}
+	</ul>
+</section>
+
+<section class="section-music">
+	<h2>Music</h2>
+	<p><a href="https://soundcloud.com/akaoka">Soundcloud</a></p>
+</section>
