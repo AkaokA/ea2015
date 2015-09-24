@@ -42,6 +42,7 @@ $( document ).ready(function() {
 // 		var transitionColor = baseColor.transition(otherColor, scrollPercent);
 // 		setGlobalColor(transitionColor);
 		
+		// intro section parallax
 		$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );
 		
 	});
