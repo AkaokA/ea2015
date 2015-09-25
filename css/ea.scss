@@ -213,7 +213,7 @@ section {
 			position: relative;
 			display: inline-block;
 			font-size: $base-font-size;
-			margin: 56px 16px;
+			margin: 40px 16px;
 			padding: 8px 0;
 			width: 288px;
 			text-align: center;
@@ -231,10 +231,23 @@ section {
 		width: 100%;
 		margin: 32px 0;
 		font-size: 0;
-		
+
 		.thumbnail {
-			height: 100px;
-			margin: 4px;
+			display: inline-block;
+			height: 288px;
+			width: 288px;
+			margin: 16px;
+			
+			background-size: contain;
+			background-repeat: no-repeat;
+			background-position: center center;
+			
+			@include filter(grayscale(100%) contrast(1));
+			@include transition(all 0.3s $ease-in-out-cubic);
+
+			&:hover {
+				@include filter(grayscale(0%) contrast(1));
+			}
 		}
 	}
 }

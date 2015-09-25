@@ -35,12 +35,13 @@ function fivehundredpx() {
 	});
 	
 	// get my photos
-  _500px.api('/photos', {feature: 'user', username: 'akaoka', image_size: 4, page: 1}, function (response) {
+  _500px.api('/photos', {feature: 'user', username: 'akaoka', image_size: 21, page: 1, rpp: 18}, function (response) {
 	  	  
 		$.each(response.data.photos, function () {
 			console.log(this);
 			
-			$('#photo-gallery').append('<img class="thumbnail" src="' + this.images[0].url + '" />');
+			$('#photo-gallery').append('<a href="https://500px.com' + this.url + '"><div class="thumbnail" style="background-image: url(' + this.images[0].url + ')"></div></a>');
+
 		});  });
 }
 
