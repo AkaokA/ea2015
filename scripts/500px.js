@@ -158,7 +158,7 @@
     //
     //    _500px.login();
     //
-    //    _500px.login(function (resposne) {
+    //    _500px.login(function (response) {
     //      if (response == 'denied') {
     //        console.log('User did not authorize the app');
     //      } elsif (response == 'authorized') {

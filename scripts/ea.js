@@ -28,19 +28,34 @@ function setGlobalColor(color){
 	$fillColorElements.attr("fill", color.toHexString() );
 }
 
+function fivehundredpx() {
+	// initialize 500px SDK
+	_500px.init({
+	  sdk_key: '92d730ffbdca5625f0ded59fb58648fb840133f1'
+	});
+	
+	// get my photos
+  _500px.api('/photos', {feature: 'user', username: 'akaoka', image_size: 4, page: 1}, function (response) {
+	  	  
+		$.each(response.data.photos, function () {
+			console.log(this);
+			
+			$('#photo-gallery').append('<img class="thumbnail" src="' + this.images[0].url + '" />');
+		});  });
+}
+
 $( document ).ready(function() {
 	// setup
 	registerElements();
 	setGlobalColor(baseColor);
 	
+	fivehundredpx();
+	
 	var homepageIntroHeight = $homepageIntroDiv.height();
 	var homepageIntroMinHeight = 280;
-	
+		
 	// transitions on scroll
 	$( window ).scroll(function() {
-// 		var scrollPercent = $body.scrollTop() / ( bodyScrollHeight - $body.outerHeight() );		
-// 		var transitionColor = baseColor.transition(otherColor, scrollPercent);
-// 		setGlobalColor(transitionColor);
 		
 		// intro section parallax
 		$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );
