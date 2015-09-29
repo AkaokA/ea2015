@@ -285,6 +285,13 @@ section {
 			padding-top: 20px;
 			box-sizing: border-box;
 			color: $color-white;
+			
+			display: none;
+			
+			a {
+				color: $color-white;
+				margin-left: 16px;
+			}
 		}
 	}
 		

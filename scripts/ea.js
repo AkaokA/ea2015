@@ -75,21 +75,24 @@ function photoGalleryEvents() {
 		  _500px.api('/photos/'+ photoId, {image_size: 2048}, function (response) {
 				var imageUrl = response.data.photo.images[0].url;
 				var photoTitle = response.data.photo.name;
-				
-				$fullscreenPhoto.load(imageUrl, function(){
-					console.log("lol");
-					$fullscreenPhoto.css("background-image", "url(" + imageUrl + ")").fadeIn();
-					$fullscreenPhotoInfo.html('<p>'+ photoTitle +'</p>');
-				});
-				
+
+		    var bgImg = new Image();
+		    bgImg.onload = function(){
+					$fullscreenPhoto.css("background-image", "url(" + bgImg.src + ")");
+					$fullscreenPhoto.fadeIn(500, function(){
+						$fullscreenPhotoInfo.html('<p>'+ photoTitle +'<a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p>');
+						$fullscreenPhotoInfo.fadeIn(500);
+					});
+		    };
+		    bgImg.src = imageUrl;
 			});			
 		});
 	});
 	
 	$fullscreenPhotoWrapper.click(function(){
-		$(this).fadeOut( function(){
-			$fullscreenPhoto.css("background-image", "none");
-			$fullscreenPhotoInfo.empty();
+		$(this).fadeOut(500, function(){
+			$fullscreenPhoto.css("background-image", "none").hide();
+			$fullscreenPhotoInfo.empty().hide();
 			$html.css("overflow", "");
 		});
 		
