@@ -58,6 +58,7 @@ function load500pxPhotos() {
 }
 
 var photoIsFullscreen = false;
+var animationSpeed = 500;
 
 function photoGalleryEvents() {
 	$photoGallery.on("click", ".thumbnail", function(){
@@ -69,7 +70,7 @@ function photoGalleryEvents() {
 		_this = $(this);
 		var photoId = $(this).attr("data");
 		
-		$fullscreenPhotoWrapper.fadeIn( function(){
+		$fullscreenPhotoWrapper.fadeIn(animationSpeed, 'easeInOutCubic', function(){
 			
 			// get photo by id
 		  _500px.api('/photos/'+ photoId, {image_size: 2048}, function (response) {
@@ -79,9 +80,9 @@ function photoGalleryEvents() {
 		    var bgImg = new Image();
 		    bgImg.onload = function(){
 					$fullscreenPhoto.css("background-image", "url(" + bgImg.src + ")");
-					$fullscreenPhoto.fadeIn(500, function(){
+					$fullscreenPhoto.fadeIn(animationSpeed, 'easeInOutCubic', function(){
 						$fullscreenPhotoInfo.html('<p>'+ photoTitle +'<a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p>');
-						$fullscreenPhotoInfo.fadeIn(500);
+						$fullscreenPhotoInfo.fadeIn(animationSpeed, 'easeInOutCubic');
 					});
 		    };
 		    bgImg.src = imageUrl;
@@ -90,7 +91,7 @@ function photoGalleryEvents() {
 	});
 	
 	$fullscreenPhotoWrapper.click(function(){
-		$(this).fadeOut(500, function(){
+		$(this).fadeOut(animationSpeed, 'easeInOutCubic', function(){
 			$fullscreenPhoto.css("background-image", "none").hide();
 			$fullscreenPhotoInfo.empty().hide();
 			$html.css("overflow", "");
