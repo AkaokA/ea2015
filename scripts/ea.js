@@ -9,7 +9,7 @@ var $strokeColorElements;
 var $fillColorElements;
 
 var $photoGallery;
-var $fullscreenPhotoWrapper;
+var $fullscreenWrapper;
 var $fullscreenPhoto;
 var $fullscreenPhotoInfo;
 
@@ -26,10 +26,10 @@ function registerElements(){
 	
 	$homepageIntroDiv = $("#homepage-intro");
 	
+	$portfolioTile = $(".section-work .tile");
+	
 	$photoGallery = $("#photo-gallery");
-	$fullscreenPhotoWrapper = $(".fullscreen-photo-wrapper");
-	$fullscreenPhoto = $(".fullscreen-photo");
-	$fullscreenPhotoInfo = $(".fullscreen-photo-info");
+	$fullscreenWrapper = $(".fullscreen-wrapper");
 }
 
 var baseColor = jQuery.Color( "#222222" );
@@ -41,48 +41,67 @@ function setGlobalColor(color){
 	$fillColorElements.attr("fill", color.toHexString() );
 }
 
+var fullscreenMode = false;
+var animationSpeed = 500;
+
+function enableFullscreen(callback){
+	fullscreenMode = true;
+	$fullscreenWrapper.fadeIn(animationSpeed, 'easeInOutCubic', callback);
+	
+	// prevent scroll on body
+	$html.css("overflow", "hidden");
+	
+	$fullscreenWrapper.click(function(){
+		$(this).fadeOut(animationSpeed, 'easeInOutCubic', function(){
+			$fullscreenWrapper.empty().hide();
+			$html.css("overflow", "");
+		});
+		
+		fullscreenMode = false;
+	});
+}
+
 var pageToLoad = 1;
 var imagesPerPage = 12;
+var photoId;
 
-function load500pxPhotos() {
+function load500pxThumbnails() {
 	// get my photos
   _500px.api('/photos', {feature: 'user', username: 'akaoka', image_size: 21, page: pageToLoad, rpp: imagesPerPage}, function (response) {
 	  	  
-		$.each(response.data.photos, function () {			
+		$.each(response.data.photos, function(){			
 			$photoGallery.append('<div class="thumbnail" style="background-image: url(' + this.images[0].url + ')" data="'+ this.id +'"></div>');
 			
 		});
 	});
 		
 	pageToLoad++;	
+	
 }
 
-var photoIsFullscreen = false;
-var animationSpeed = 500;
-
-function photoGalleryEvents() {
+function clickEvents() {
+	$portfolioTile.click(function(){
+		enableFullscreen();
+	});
+	
 	$photoGallery.on("click", ".thumbnail", function(){
-		photoIsFullscreen = true;
+		photoId = $(this).attr("data");
 		
-		// prevent scroll on body
-		$html.css("overflow", "hidden");
-		
-		_this = $(this);
-		var photoId = $(this).attr("data");
-		
-		$fullscreenPhotoWrapper.fadeIn(animationSpeed, 'easeInOutCubic', function(){
+		enableFullscreen(function() {
+			$fullscreenWrapper.append('<div class="fullscreen-photo"></div>');
+			$fullscreenPhoto = $(".fullscreen-photo");
 			
 			// get photo by id
-		  _500px.api('/photos/'+ photoId, {image_size: 2048}, function (response) {
+		  _500px.api('/photos/'+ photoId, {image_size: 2048}, function(response) {
 				var imageUrl = response.data.photo.images[0].url;
 				var photoTitle = response.data.photo.name;
-
+		
 		    var bgImg = new Image();
 		    bgImg.onload = function(){
 					$fullscreenPhoto.css("background-image", "url(" + bgImg.src + ")");
-					$fullscreenPhoto.fadeIn(animationSpeed, 'easeInOutCubic', function(){
-						$fullscreenPhotoInfo.html('<p>'+ photoTitle +'<a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p>');
-						$fullscreenPhotoInfo.fadeIn(animationSpeed, 'easeInOutCubic');
+					$fullscreenPhoto.fadeIn(animationSpeed+1000, 'easeInOutCubic', function(){
+						$fullscreenWrapper.append('<div class="fullscreen-photo-info"><p>'+ photoTitle +'<a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p></div>');
+						$(".fullscreen-photo-info").fadeIn(animationSpeed, 'easeInOutCubic');
 					});
 		    };
 		    bgImg.src = imageUrl;
@@ -90,14 +109,9 @@ function photoGalleryEvents() {
 		});
 	});
 	
-	$fullscreenPhotoWrapper.click(function(){
-		$(this).fadeOut(animationSpeed, 'easeInOutCubic', function(){
-			$fullscreenPhoto.css("background-image", "none").hide();
-			$fullscreenPhotoInfo.empty().hide();
-			$html.css("overflow", "");
-		});
-		
-		photoIsFullscreen = false;
+	$(".load-more-photos").click(function(event){
+		event.preventDefault();
+		load500pxThumbnails();
 	});
 }
 
@@ -107,10 +121,17 @@ function scrollEvents() {
 			// intro section parallax
 			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );		
 	});
+	
+	// prevent touch scrolling in fullscreen mode
+	$(document).bind('touchmove', function(e){
+		if (fullscreenMode) {
+			e.preventDefault();           
+		}
+	});
 }
 
-$( document ).ready(function() {
-	// setup
+$(window).load(function(){
+	// DOM setup
 	registerElements();
 	setGlobalColor(baseColor);
 	
@@ -119,21 +140,8 @@ $( document ).ready(function() {
 	  sdk_key: '92d730ffbdca5625f0ded59fb58648fb840133f1'
 	});
 	
-	// load 500px photos
-	load500pxPhotos();
-	$(".load-more-photos").click(function(event){
-		event.preventDefault();
-		load500pxPhotos();
-	});
-	
-	photoGalleryEvents();
-	
+	load500pxThumbnails();
+	clickEvents();
 	scrollEvents();
-	
-	$(document).bind('touchmove', function(e){
-		if (photoIsFullscreen) {
-			e.preventDefault();           
-		}
-	});
 	
 });
