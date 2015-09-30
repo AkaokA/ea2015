@@ -52,6 +52,13 @@ $base-font-size: 16px;
 	}
 }
 
+@include keyframes(spinner) {
+	to {
+		transform: rotate(1080deg);
+		stroke-dashoffset: 0;
+	}
+}
+
 // !———— Basic Styles ————
 
 html {
@@ -99,6 +106,10 @@ p {
 	line-height: 1.5;
 }
 
+strong {
+	font-weight: 600;
+}
+
 a {
 	color: $color-black;
 }
@@ -126,9 +137,7 @@ section {
 	padding: 32px 0;
 	height: 95%;
 	min-height: 280px;
-	
-// 	@include transition(all 0.05s linear);
-	
+		
 	&.shorter {
 		height: 320px;
 	}
@@ -143,8 +152,7 @@ section {
 	h1, p {
 		opacity: 0;
 		
-		@include animation( fade-in 0.75s $ease-in-out-cubic 1 );
-		@include animation-fill-mode(forwards);
+		@include animation( fade-in 0.75s $ease-in-out-cubic 1 forwards);
 	}
 	
 	h1 {
@@ -160,8 +168,7 @@ section {
 	opacity: 0;
 
 	@include transform( rotateX(0deg) rotateY(0deg) rotateZ(720deg) translateZ(0) scale(1.0, 1.0) );
-	@include animation( rotate-in 3s $ease-out-expo 1 );
-	@include animation-fill-mode(forwards);
+	@include animation( rotate-in 3s $ease-out-expo 1 forwards);
 	
 	path {
 		stroke-width: 3;
@@ -171,8 +178,7 @@ section {
 		stroke-dasharray: 18;
 		stroke-dashoffset: 18;
 
-		@include animation( draw-line 0.5s $ease-out-cubic 1 );
-		@include animation-fill-mode(forwards);
+		@include animation( draw-line 0.5s $ease-out-cubic 1 forwards);
 		
 		&.a{
 			@include animation-delay(1.125s);
@@ -186,8 +192,7 @@ section {
 		stroke-dasharray: 54;
 		stroke-dashoffset: 54;
 
-		@include animation( draw-line 1s $ease-out-cubic 1 );
-		@include animation-fill-mode(forwards);
+		@include animation( draw-line 1s $ease-out-cubic 1 forwards);
 		@include animation-delay(1s);
 	}
 	
@@ -195,8 +200,7 @@ section {
 		stroke-dasharray: 85;
 		stroke-dashoffset: 85;
 
-		@include animation( draw-line 1s $ease-in-out-cubic 1 );
-		@include animation-fill-mode(forwards);
+		@include animation( draw-line 1s $ease-in-out-cubic 1 forwards);
 	}
 }
 
@@ -267,6 +271,26 @@ section {
 	z-index: 1000;
 	background-color: $color-true-black;
 	display: none;
+	
+	.spinner {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin: -39px 0 0 -39px;
+		
+		@include animation(spinner 3s $ease-in-out-sine infinite);
+		
+		path {
+			stroke: $color-white;
+			stroke-width: 3;
+		}
+		.curve {
+			stroke-dasharray: 85;
+			stroke-dashoffset: 85;
+			@include animation(draw-line 3s $ease-in-out-cubic 1 forwards);
+		}
+
+	}
 	
 	.fullscreen-photo {
 		position: absolute;

@@ -10,6 +10,7 @@ var $fillColorElements;
 
 var $photoGallery;
 var $fullscreenWrapper;
+var $spinner;
 var $fullscreenPhoto;
 var $fullscreenPhotoInfo;
 
@@ -30,6 +31,7 @@ function registerElements(){
 	
 	$photoGallery = $("#photo-gallery");
 	$fullscreenWrapper = $(".fullscreen-wrapper");
+	$spinner = $(".spinner");
 }
 
 var baseColor = jQuery.Color( "#222222" );
@@ -46,6 +48,7 @@ var animationSpeed = 500;
 
 function enableFullscreen(callback){
 	fullscreenMode = true;
+	$spinner.fadeIn(animationSpeed, 'easeInOutCubic');
 	$fullscreenWrapper.fadeIn(animationSpeed, 'easeInOutCubic', callback);
 	
 	// prevent scroll on body
@@ -53,7 +56,13 @@ function enableFullscreen(callback){
 	
 	$fullscreenWrapper.click(function(){
 		$(this).fadeOut(animationSpeed, 'easeInOutCubic', function(){
-			$fullscreenWrapper.empty().hide();
+			
+			$fullscreenWrapper.contents().filter(function(){
+			    return !$(this).is('.spinner');
+			}).remove();
+			
+			$fullscreenWrapper.hide();
+
 			$html.css("overflow", "");
 		});
 		
@@ -100,9 +109,11 @@ function clickEvents() {
 		    bgImg.onload = function(){
 					$fullscreenPhoto.css("background-image", "url(" + bgImg.src + ")");
 					$fullscreenPhoto.fadeIn(animationSpeed+1000, 'easeInOutCubic', function(){
-						$fullscreenWrapper.append('<div class="fullscreen-photo-info"><p>'+ photoTitle +'<a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p></div>');
+						$fullscreenWrapper.append('<div class="fullscreen-photo-info"><p><strong>'+ photoTitle +'</strong><a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p></div>');
 						$(".fullscreen-photo-info").fadeIn(animationSpeed, 'easeInOutCubic');
 					});
+					
+					$spinner.fadeOut(animationSpeed, 'easeInOutCubic');
 		    };
 		    bgImg.src = imageUrl;
 			});			
