@@ -112,7 +112,6 @@ function clickEvents() {
 						$fullscreenWrapper.append('<div class="fullscreen-photo-info"><p><strong>'+ photoTitle +'</strong><a href="https://500px.com/photo/'+ photoId +'">view on 500px</a></p></div>');
 						$(".fullscreen-photo-info").fadeIn(animationSpeed, 'easeInOutCubic');
 					});
-					
 					$spinner.fadeOut(animationSpeed, 'easeInOutCubic');
 		    };
 		    bgImg.src = imageUrl;
@@ -127,7 +126,6 @@ function clickEvents() {
 }
 
 function scrollEvents() {		
-	// transitions on scroll
 	$( window ).scroll(function(event) {
 			// intro section parallax
 			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );		
