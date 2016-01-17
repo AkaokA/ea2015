@@ -19,16 +19,12 @@ function registerElements(){
 	$body = $("body");
 	
 	bodyScrollHeight = $("body")[0].scrollHeight;
-	
 	$bgcolorElements = $("h2");
 	$colorElements = $("body, a");
 	$strokeColorElements = $("svg.stroke path");
 	$fillColorElements = $("svg.fill path");
-	
 	$homepageIntroDiv = $("#homepage-intro");
-	
 	$portfolioTile = $(".section-work .tile");
-	
 	$photoGallery = $("#photo-gallery");
 	$fullscreenWrapper = $(".fullscreen-wrapper");
 	$spinner = $(".spinner");
