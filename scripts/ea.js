@@ -85,9 +85,11 @@ function load500pxThumbnails() {
 }
 
 function clickEvents() {
+/*
 	$portfolioTile.click(function(){
 		enableFullscreen();
 	});
+*/
 	
 	$photoGallery.on("click", ".thumbnail", function(){
 		photoId = $(this).attr("data");
@@ -138,7 +140,7 @@ function scrollEvents() {
 $(window).load(function(){
 	// DOM setup
 	registerElements();
-	setGlobalColor(baseColor);
+/* 	setGlobalColor(baseColor); */
 	
 	// initialize 500px SDK
 	_500px.init({
