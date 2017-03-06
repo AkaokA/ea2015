@@ -349,7 +349,7 @@ header {
 	top: 0;
 	left: 0;
 	right: 0;
-	padding: $spacing-unit/2;
+	padding: $spacing-unit/2 $spacing-unit;
 	background-color: $color-white;
 	border-bottom: 1px solid $transparent-black;
 
@@ -405,6 +405,17 @@ footer {
 .portfolio {
 	background-color: $color-black;
 	color: $color-white;
+
+	svg {
+		&.stroke g {
+			stroke: $color-white;
+		}
+		&.fill g,
+		&.fill use,
+		&.fill path {
+			fill: $color-white;
+		}
+	}
 	
 	header {
 		color: $color-white;
@@ -419,16 +430,6 @@ footer {
 		margin-bottom: ($spacing-unit * 4);
 		text-align: center;
 		
-		svg {
-			&.stroke g {
-				stroke: $color-white;
-			}
-			&.fill g,
-			&.fill use,
-			&.fill path {
-				fill: $color-white;
-			}
-		}
 		
 		h1 {
 			margin-bottom: 0.5em;
