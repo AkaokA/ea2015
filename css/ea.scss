@@ -350,7 +350,8 @@ header {
 	left: 0;
 	right: 0;
 	padding: $spacing-unit/2 $spacing-unit;
-	background-color: $color-white;
+	-webkit-backdrop-filter: blur(32px);
+	background-color: rgba(255,255,255,0.2);
 	border-bottom: 1px solid $transparent-black;
 
 	@include transition(transform 0.3s $ease-in-out-cubic);
@@ -419,7 +420,8 @@ footer {
 	
 	header {
 		color: $color-white;
-		background-color: $color-black;
+  	-webkit-backdrop-filter: blur(32px);
+  	background-color: rgba(34,34,34,0.2);
 	}
 	
 	.content-wrapper {
