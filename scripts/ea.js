@@ -3,6 +3,7 @@ var $body;
 var bodyScrollHeight;
 
 var $homepageIntroDiv;
+var $homepageHeader;
 var $bgcolorElements;
 var $colorElements;
 var $strokeColorElements;
@@ -24,6 +25,7 @@ function registerElements(){
 	$strokeColorElements = $("svg.stroke path");
 	$fillColorElements = $("svg.fill path");
 	$homepageIntroDiv = $("#homepage-intro");
+	$homepageHeader = $(".homepage-header");
 	$portfolioTile = $(".section-work .tile");
 	$photoGallery = $("#photo-gallery");
 	$fullscreenWrapper = $(".fullscreen-wrapper");
@@ -67,7 +69,7 @@ function enableFullscreen(callback){
 }
 
 var pageToLoad = 1;
-var imagesPerPage = 12;
+var imagesPerPage = 24;
 var photoId;
 
 function load500pxThumbnails() {
@@ -76,7 +78,7 @@ function load500pxThumbnails() {
 	  	  
 		$.each(response.data.photos, function(){			
 			$photoGallery.append('<div class="thumbnail" style="background-image: url(' + this.images[0].url + ')" data="'+ this.id +'"></div>');
-			
+// 			$photoGallery.append('<img class="thumbnail" src="'+ this.images[0].url +'" data="'+ this.id +'"/>');
 		});
 	});
 		
@@ -124,9 +126,14 @@ function clickEvents() {
 }
 
 function scrollEvents() {		
-	$( window ).scroll(function(event) {
+	$(window).scroll(function(event) {
 			// intro section parallax
-			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );		
+			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );
+			if ( $body.scrollTop() > ($(window).height() - 200) ) {
+				$homepageHeader.removeClass("hidden");
+			} else {
+				$homepageHeader.addClass("hidden");
+			}
 	});
 	
 	// prevent touch scrolling in fullscreen mode

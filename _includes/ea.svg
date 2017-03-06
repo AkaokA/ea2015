@@ -1,0 +1,13 @@
+<svg class="other tile-image stroke" width="288px" height="120px" viewBox="0 0 288 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g sketch:type="MSArtboardGroup" stroke-linecap="round" stroke="#000000" stroke-width="3">
+            <g sketch:type="MSLayerGroup" transform="translate(112.000000, 28.000000)">
+                <path d="M30.6666667,1.48029737e-16 L30.6666667,48" id="Line" sketch:type="MSShapeGroup"></path>
+                <path d="M48,30.6666667 L32,30.6666667" id="Line-Copy" sketch:type="MSShapeGroup" transform="translate(40.000000, 30.666667) scale(-1, -1) translate(-40.000000, -30.666667) "></path>
+                <path d="M16,30.6666667 L0,30.6666667" id="Line-Copy-2" sketch:type="MSShapeGroup" transform="translate(8.000000, 30.666667) scale(-1, -1) translate(-8.000000, -30.666667) "></path>
+                <path d="M54.627417,54.627417 C60.418278,48.836556 64,40.836556 64,32 C64,14.326888 49.673112,0 32,0" id="Oval-6" sketch:type="MSShapeGroup"></path>
+                <path d="M9.372583,9.33333333 C3.581722,15.1241943 0,23.1241943 0,31.9607503 C0,49.6338623 14.326888,63.9607503 32,63.9607503" id="Path" sketch:type="MSShapeGroup"></path>
+            </g>
+        </g>
+    </g>
+</svg>

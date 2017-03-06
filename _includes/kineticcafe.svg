@@ -1,0 +1,12 @@
+<svg class="kineticcafe tile-image stroke" width="288px" height="120px" viewBox="0 0 288 120" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g id="Portfolio-Tile-Images" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+      <g id="Kinetic-Cafe" stroke-width="2" stroke="#222222">
+          <g id="Group-9" transform="translate(112.000000, 30.000000)">
+              <polyline id="Stroke-1" points="22.8571429 40.7127499 36.5702675 16.2857143 59.4285714 57"></polyline>
+              <polygon id="Stroke-3" points="0 48.8565944 4.57129589 57 59.4287041 57 64 48.8565944 36.5722246 0 27.4277754 0"></polygon>
+              <polyline id="Stroke-5" stroke-linecap="square" points="32.9028227 24.4285714 46.8571429 48.8571429 1.14285714 48.8571429"></polyline>
+              <polyline id="Stroke-7" points="42.2857143 40.7142857 13.7142857 40.7142857 36.2034955 0"></polyline>
+          </g>
+      </g>
+  </g>
+</svg>
