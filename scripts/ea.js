@@ -128,8 +128,8 @@ function clickEvents() {
 function scrollEvents() {		
 	$(window).scroll(function(event) {
 			// intro section parallax
-			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $body.scrollTop()/3 +"px)" );
-			if ( $body.scrollTop() > ($(window).height() - 160) ) {
+			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $(window).scrollTop()/3 +"px)" );
+			if ( $(window).scrollTop() > ($(window).height() - 160) ) {
 				$homepageHeader.removeClass("hidden");
 			} else {
 				$homepageHeader.addClass("hidden");
