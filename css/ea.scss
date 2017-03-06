@@ -424,9 +424,11 @@ footer {
 	
 	.content-wrapper {
 		padding: ($header-height + $spacing-unit) 0 $spacing-unit 0 ;
+		text-align: center;
 	}
 
 	.portfolio-title {
+  	display: inline-block;
 		max-width: 600px;
 		margin-bottom: ($spacing-unit * 4);
 		padding: 0 $spacing-unit*2;
@@ -440,6 +442,7 @@ footer {
 		align-items: flex-start;
 		justify-content: center;
 		margin-bottom: $spacing-unit *2;
+		text-align: left;
 		
 		.column {
 			width: $column-width;
