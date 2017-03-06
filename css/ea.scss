@@ -427,10 +427,10 @@ footer {
 	}
 
 	.portfolio-title {
+		max-width: 600px;
 		margin-bottom: ($spacing-unit * 4);
+		padding: 0 $spacing-unit*2;
 		text-align: center;
-		
-		
 	}
 	
 	.work-item {
