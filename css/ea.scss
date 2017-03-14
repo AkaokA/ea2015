@@ -108,8 +108,16 @@ h3 {
 	line-height: 1.5;
 }
 
+.subtitle {
+	font-weight: 600;
+}
+
 p {
 	line-height: 1.5;
+}
+
+em {
+	font-style: italic;
 }
 
 strong {
@@ -431,7 +439,7 @@ footer {
 
 	.portfolio-title {
   	display: inline-block;
-		max-width: 600px;
+		max-width: 500px;
 		margin: 0 auto ($spacing-unit * 4) auto;
 		padding: 0 $spacing-unit*2;
 		text-align: center;
