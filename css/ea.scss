@@ -447,12 +447,17 @@ footer {
 		text-align: center;
 	}
 
-	.portfolio-title {
+	.portfolio-header {
   	display: inline-block;
-		max-width: 500px;
+  	width: 500px;
+		max-width: 100%;
 		margin: 0 auto ($spacing-unit * 4) auto;
-		padding: 0 $spacing-unit*2;
+		padding: 0 $spacing-unit;
 		text-align: center;
+		
+		.description {
+  		margin-top: 2em;
+		}
 	}
 	
 	.work-item {
