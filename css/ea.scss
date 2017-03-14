@@ -29,6 +29,7 @@ $spacing-unit: 16px;
 $column-width: 288px;
 
 $base-shadow: 0 4px 16px rgba(0,0,0,0.2);
+$light-shadow: 0 4px 16px rgba(0,0,0,0.05);
 $corner-radius: 2px;
 
 // !———— Animations ————
@@ -236,9 +237,18 @@ section {
 		.tile {
 			position: relative;
 			margin: $spacing-unit*2 $spacing-unit;
-			padding: 8px 0;
+			padding: 0 0 $spacing-unit 0;
 			width: $column-width;
 			text-align: center;
+      border: 1px solid rgba(0,0,0,0);
+			border-radius: $corner-radius;
+			@include transition(all 0.2s $ease-in-out-cubic);
+			
+			&:hover {
+  			transform: translateY(-$spacing-unit/4);
+  			box-shadow: $light-shadow;
+        border: 1px solid $transparent-black;
+			}
 			
 			.tile-image {
 				border-bottom: 1px solid $transparent-black;
