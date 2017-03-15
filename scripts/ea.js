@@ -128,6 +128,7 @@ function clickEvents() {
 function scrollEvents() {		
 	$(window).scroll(function(event) {
 			// intro section parallax
+			
 			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $(window).scrollTop()/3 +"px)" );
 			if ( $(window).scrollTop() > ($(window).height() - 160) ) {
 				$homepageHeader.removeClass("hidden");
@@ -149,13 +150,18 @@ $(window).load(function(){
 	registerElements();
 /* 	setGlobalColor(baseColor); */
 	
-	// initialize 500px SDK
-	_500px.init({
-	  sdk_key: '92d730ffbdca5625f0ded59fb58648fb840133f1'
-	});
-	
-	load500pxThumbnails();
-	clickEvents();
-	scrollEvents();
+	if ($photoGallery) {
+  	// initialize 500px SDK
+  	_500px.init({
+  	  sdk_key: '92d730ffbdca5625f0ded59fb58648fb840133f1'
+  	});
+  	
+  	load500pxThumbnails();
+  	clickEvents();
+  }
+
+	if ($homepageIntroDiv) {
+  	scrollEvents();
+	}
 	
 });
