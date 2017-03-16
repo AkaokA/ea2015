@@ -33,6 +33,8 @@ $base-shadow: 0 4px 16px rgba(0,0,0,0.2);
 $light-shadow: 0 4px 16px rgba(0,0,0,0.05);
 $corner-radius: 2px;
 
+$animation-delay: 1s;
+
 // !———— Animations ————
 
 @include keyframes(fade-in) {
@@ -151,7 +153,7 @@ section {
 	position: relative;
 	text-align: center;
 	padding: ($spacing-unit * 2) 0;
-	height: 95vh;
+	height: 94vh;
 	min-height: 280px;
 		
 	&.shorter {
@@ -173,10 +175,10 @@ section {
 	}
 	
 	h1 {
-		@include animation-delay(2s);
+		@include animation-delay($animation-delay + 2s);
 	}
 	p {
-		@include animation-delay(3s);
+		@include animation-delay($animation-delay + 3s);
 	}
 }
 
@@ -185,7 +187,7 @@ section {
 	opacity: 0;
 
 	@include transform( rotateX(0deg) rotateY(0deg) rotateZ(720deg) translateZ(0) scale(1.0, 1.0) );
-	@include animation( rotate-in 3s $ease-out-expo 1 forwards);
+	@include animation( rotate-in 3s $ease-out-expo $animation-delay 1 forwards);
 	
 	path {
 		stroke-width: 3;
@@ -195,13 +197,13 @@ section {
 		stroke-dasharray: 18;
 		stroke-dashoffset: 18;
 
-		@include animation( draw-line 0.5s $ease-out-cubic 1 forwards);
+		@include animation( draw-line 0.5s $ease-out-cubic $animation-delay 1 forwards);
 		
 		&.a{
-			@include animation-delay(1.125s);
+			@include animation-delay($animation-delay + 1.125s);
 		}
 		&.b{
-			@include animation-delay(1.25s);
+			@include animation-delay($animation-delay + 1.25s);
 		}
 	}
 	
@@ -210,14 +212,14 @@ section {
 		stroke-dashoffset: 54;
 
 		@include animation( draw-line 1s $ease-out-cubic 1 forwards);
-		@include animation-delay(1s);
+		@include animation-delay($animation-delay + 1s);
 	}
 	
 	.curve {
 		stroke-dasharray: 85;
 		stroke-dashoffset: 85;
 
-		@include animation( draw-line 1s $ease-in-out-cubic 1 forwards);
+		@include animation( draw-line 1s $ease-in-out-cubic $animation-delay 1 forwards);
 	}
 }
 
@@ -516,6 +518,10 @@ footer {
     			
   				border-radius: $corner-radius;
   				box-shadow: $base-shadow;
+  			}
+  			
+  			&.portrait {
+	  			padding-bottom: 177.78%; /* 16:9 portrait */
   			}
 			}
 			
