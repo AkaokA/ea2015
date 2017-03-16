@@ -378,7 +378,7 @@ header {
 	@include transition(transform 0.3s $ease-in-out-cubic);
 	
 	&.hidden {
-		transform: translateY(-100%);
+		transform: translateY(-300%);
 	}
 	
 	a {

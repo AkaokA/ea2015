@@ -1,5 +1,6 @@
 var $html;
 var $body;
+var $window;
 var bodyScrollHeight;
 
 var $homepageIntroDiv;
@@ -18,6 +19,7 @@ var $fullscreenPhotoInfo;
 function registerElements(){
 	$html = $("html");
 	$body = $("body");
+	$window = $(window);
 	
 	bodyScrollHeight = $("body")[0].scrollHeight;
 	$bgcolorElements = $("h2");
@@ -129,8 +131,9 @@ function scrollEvents() {
 	$(window).scroll(function(event) {
 			// intro section parallax
 			
-			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $(window).scrollTop()/3 +"px)" );
-			if ( $(window).scrollTop() > ($(window).height() - 160) ) {
+			$homepageIntroDiv.css( "-webkit-transform", "translateY("+ $window.scrollTop()/3 +"px)" );
+			
+			if ( $window.scrollTop() > ($window.height() - 160) ) {
 				$homepageHeader.removeClass("hidden");
 			} else {
 				$homepageHeader.addClass("hidden");
