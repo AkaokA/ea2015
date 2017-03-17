@@ -230,7 +230,7 @@ section {
 	text-align: center;
 }
 
-.section-work {
+.tile-section {
 	
 	ul {
 		display: flex;
@@ -255,7 +255,14 @@ section {
 			
 			.tile-image {
 				border-bottom: 1px solid $transparent-black;
-				margin-bottom: 8px;
+				margin-bottom: $spacing-unit/2;
+			}
+			
+			img {
+  			border-radius: $corner-radius;
+  			max-width: 100%;
+  			height: auto;
+  			margin-bottom: $spacing-unit/2;
 			}
 			
 			a {
