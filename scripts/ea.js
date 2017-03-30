@@ -71,7 +71,7 @@ function enableFullscreen(callback){
 }
 
 var pageToLoad = 1;
-var imagesPerPage = 24;
+var imagesPerPage = 36;
 
 function load500pxThumbnails() {
 	// get my photos
