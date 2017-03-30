@@ -72,11 +72,10 @@ function enableFullscreen(callback){
 
 var pageToLoad = 1;
 var imagesPerPage = 24;
-var photoId;
 
 function load500pxThumbnails() {
 	// get my photos
-  _500px.api('/photos', {feature: 'user', username: 'akaoka', image_size: 21, page: pageToLoad, rpp: imagesPerPage}, function (response) {
+  _500px.api('/users/769630/galleries/3bda7726ae3b92e5448ce63ffcebce38077fd72d0a7fd6e390fd08cb18a01599/items', {image_size: 21, sort: 'taken_at', sort_direction: 'desc', page: pageToLoad, rpp: imagesPerPage, include_missing: 1}, function (response) {
 	  	  
 		$.each(response.data.photos, function(){			
 			$photoGallery.append('<div class="thumbnail" style="background-image: url(' + this.images[0].url + ')" data="'+ this.id +'"></div>');
@@ -96,7 +95,7 @@ function clickEvents() {
 */
 	
 	$photoGallery.on("click", ".thumbnail", function(){
-		photoId = $(this).attr("data");
+		var photoId = $(this).attr("data");
 		
 		enableFullscreen(function() {
 			$fullscreenWrapper.append('<div class="fullscreen-photo"></div>');
