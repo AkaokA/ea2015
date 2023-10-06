@@ -1,5 +1,7 @@
 {
   "identifier" : "6F6B2C80-80C9-4497-990D-125050BF33D9",
+  "localPath" : "_site",
+  "remotePath" : "\/",
   "server" : "ericakaoka.com",
-  "usesPublishing" : false
+  "usesPublishing" : true
 }

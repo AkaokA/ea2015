@@ -7,6 +7,16 @@
 		<section class="content">
 	    <div class="content-wrapper">
 		    <div class="portfolio-header">
+          <ul>
+            <li><a href="/work/thegameband">The Game Band</a></li>
+            <li><a href="/work/wealthsimple">Wealthsimple</a></li>
+            <li><a href="/work/kineticcafe">Kinetic Café</a></li>
+            <li><a href="/work/cast">Cast</a></li>
+            <li><a href="/work/fivehundredpx">500px</a></li>
+            <li><a href="/work/debacle">Debacle</a></li>
+            <li><a href="/work/personal">Personal</a></li>
+          </ul>
+
 			    {% include {{page.id}}.svg %}
 			    <h1>{{page.title}}</h1>
 			    <p class="subtitle">{{page.years}}</p>
@@ -19,6 +29,8 @@
     </section>
     
     {% include header.html %}
+    
+    {% include portfolio-footer.html %}
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
