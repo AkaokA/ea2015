@@ -35,7 +35,7 @@ $spacing-unit: 16px;
 $content-width: 960px;
 $column-width: 288px;
 
-$base-shadow: 0 4px 16px rgba(0,0,0,0.2);
+$base-shadow: 0 4px 16px rgba(0,0,0,0.50);
 $light-shadow: 0 4px 16px rgba(0,0,0,0.1);
 $corner-radius: 16px;
 
@@ -261,7 +261,7 @@ section {
 				box-shadow: $light-shadow;
     			border: 1px solid $transparent-black;
 			}
-						
+			
 			.tile-image {
 				border-bottom: 1px solid $transparent-black;
 				margin-bottom: calc($spacing-unit/2);
@@ -289,6 +289,23 @@ section {
 			p {
 				margin: 0 calc($spacing-unit / 2);
 			}
+			
+			&#theredesign {
+				padding: 0;
+				
+				img {
+					margin: 0;
+				}
+				
+				a {
+					position: relative;
+					top: unset;
+					bottom: unset;
+					left: unset;
+					right: unset;
+
+				}
+			}
 		}
 	}
 	
@@ -309,16 +326,17 @@ section {
 }
 
 // !———— Header ————
-$header-height: 40px;
+$header-height: 60px;
 
 header {
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	padding: calc($spacing-unit/2) $spacing-unit;
+	padding: calc($spacing-unit * 0.75) $spacing-unit; 
+	backdrop-filter: blur(32px);
 	-webkit-backdrop-filter: blur(32px);
-	background-color: rgba(255,255,255,0.5);
+	background-color: rgba(255,255,255,0.25);
 	border-bottom: 1px solid $transparent-black;
 
 	@include transition(transform 0.2s $ease-in-out-cubic);
@@ -385,10 +403,11 @@ footer {
 		}
 	}
 	
-	header {
+	header { 
 		color: $color-white;
+		backdrop-filter: blur(32px);
 		-webkit-backdrop-filter: blur(32px);
-		background-color: rgba(34,34,34,0.5);
+		background-color: rgba(34,34,34,0.25);
 	}
 	
 	.content-wrapper {
