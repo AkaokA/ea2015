@@ -20,13 +20,17 @@ html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abb
 // !———— Variables ————
 
 $color-black: #222;
-$color-offblack: #555;
+$color-offblack: #666;
 $color-white: #fff;
-$color-offwhite: #ccc;
+$color-offwhite: #aaa;
 $transparent-black: rgba(0,0,0,0.1);
 $color-true-black: #000;
 
-$base-font-size: 16px;
+$font-size-huge: 48px;
+$font-size-xlarge: 24px;
+$font-size-large: 21px;
+$font-size-base: 16px;
+$font-size-small: 14px;
 $spacing-unit: 16px;
 $content-width: 960px;
 $column-width: 288px;
@@ -80,7 +84,7 @@ body {
 	font-family: "adelle-sans-1","adelle-sans-2", sans-serif;
 	font-style: normal;
 	font-weight: 400;
-	font-size: $base-font-size;
+	font-size: $font-size-base;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
 	height: 100%;
@@ -88,7 +92,7 @@ body {
 }
 
 h1 {
-	font-size: $base-font-size * 3;
+	font-size: $font-size-huge;
 	font-weight: 300;
 	line-height: 1;
 	margin: 8px 0 0.5em 0;
@@ -97,19 +101,15 @@ h1 {
 
 h2 {
 	display: inline-block;
-	font-size: calc($base-font-size * 1.5);
+	font-size: $font-size-xlarge;
 	font-weight: 800;
 	line-height: 1;
 	margin: $spacing-unit 0;
 	text-transform: uppercase;
-	// padding: calc($spacing-unit/2) $spacing-unit;
-	// color: $color-white;
-	// background-color: $color-black;
-	// border-radius: $corner-radius;
 }
 
 h3 {
-	font-size: $base-font-size;
+	font-size: $font-size-base;
 	font-weight: 600;
 	line-height: 1.5;
 }
@@ -179,6 +179,7 @@ section {
 		@include animation-delay($animation-delay + 2s);
 	}
 	p {
+		font-size: $font-size-large;
 		@include animation-delay($animation-delay + 2.25s);
 	}
 }
@@ -281,10 +282,18 @@ section {
 				right: 0;
 			}
 			
+			h3 {
+				color: $color-black;
+			}
+			
 			p {
 				margin: 0 calc($spacing-unit / 2);
 			}
 		}
+	}
+	
+	h2 {
+		color: $color-black;
 	}
 	
 	& > p {
@@ -335,7 +344,7 @@ header {
 	
 	h1 {
 		display: inline;
-		font-size: $base-font-size;
+		font-size: $font-size-base;
 		font-weight: 600;
 		vertical-align: middle;
 	}
@@ -354,7 +363,7 @@ footer {
 		li {
 			display: inline-block;
 			margin: 0 $spacing-unit;
-			font-size: $base-font-size;
+			font-size: $font-size-base;
 		}
 	}
 }
@@ -383,7 +392,7 @@ footer {
 	}
 	
 	.content-wrapper {
-		padding: $header-height 0 $spacing-unit 0 ;
+		padding: $header-height 0 0 0 ;
 		text-align: center;
 	}
 
@@ -395,6 +404,7 @@ footer {
 		padding: 0 calc($spacing-unit);
 		text-align: center;
 		color: $color-white;
+		font-size: $font-size-large;
 		
 		svg {
 			// margin-bottom: $spacing-unit;
@@ -420,15 +430,15 @@ footer {
 		}
 		
 		ul {
-			padding: $spacing-unit;
+			padding: $spacing-unit 0;
 			margin-bottom: calc($spacing-unit * 2);
-			line-height: 1.4;
+			line-height: 1.5;
 			border-bottom: 1px dotted $color-offblack;
 			
 			li {
 				margin: 0 calc($spacing-unit / 2);
 				display: inline;
-				font-size: calc($base-font-size * 0.8);
+				font-size: $font-size-small;
 				font-weight: 600;
 				
 				a {
@@ -438,7 +448,6 @@ footer {
 					&:hover {
 						color: $color-white;
 					}
-
 				}
 			}
 		}
@@ -462,9 +471,9 @@ footer {
 		}
 		
 		@media only screen and (max-width: 640px) {
-      		.column {
+			.column {
         		width: 100%;
-      		}
+    		}
 		}
 		
 		.wide {
@@ -478,6 +487,15 @@ footer {
 			max-width: 100%;
 		}
 		
+		.grid {
+			display: grid;
+			justify-content: center;
+			justify-items: center;
+			column-gap: calc($spacing-unit * 2);
+			row-gap: calc($spacing-unit * 2);
+			grid-template-columns: repeat( auto-fit, minmax(250px, $column-width) );
+		}
+		
 		.work-description {
 			margin-bottom: $spacing-unit;
 		}
@@ -485,14 +503,14 @@ footer {
 		.work-images {
 			margin: $spacing-unit 0 calc($spacing-unit*4) 0;
 			// padding: 0 $spacing-unit;
-
+			
 			.video-wrapper {
-  			width: 100%;  			
-      		position: relative;
-      		padding-bottom: 56.25%; /* 16:9 */
-      		height: 0;
-
-  				iframe, .youtube {
+			width: 100%;  			
+    		position: relative;
+    		padding-bottom: 56.25%; /* 16:9 */
+    		height: 0;
+			
+			iframe, .youtube {
     				position: absolute;
     				top: 0;
     				left: 0;
@@ -525,7 +543,7 @@ footer {
 	}
 	
 	p {
-		margin-bottom: $base-font-size ;
+		margin-bottom: $font-size-base;
 	}
 		
 	a {
