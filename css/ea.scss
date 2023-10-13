@@ -37,7 +37,7 @@ $column-width: 288px;
 
 $base-shadow: 0 4px 16px rgba(0,0,0,0.50);
 $light-shadow: 0 4px 16px rgba(0,0,0,0.1);
-$corner-radius: 16px;
+$corner-radius: 8px;
 
 $animation-delay: 0.5s;
 
@@ -155,7 +155,7 @@ section {
 	position: relative;
 	text-align: center;
 	padding: calc($spacing-unit * 2) 0;
-	height: 90vh;
+	height: 95vh;
 	min-height: 280px;
 		
 	&.shorter {
